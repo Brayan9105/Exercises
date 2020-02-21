@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class Square
     def initialize
         @squareSum = 0
@@ -30,10 +32,25 @@ class Square
     end
 end
 
-mySquareDif = Square.new
 
-mySquareDif.calculate_Sum(5)
-puts mySquareDif.find_diference
-mySquareDif.calculate_Sum(10)
-puts mySquareDif.find_diference
+
+class TestSquareDif < Minitest::Test
+    def setup
+        @mySquareDif = Square.new
+    end
+
+    def test_calculate_Sum
+        assert_nil @mySquareDif.calculate_Sum(5)
+
+        assert_equal 20, @mySquareDif.sum_of_natural_nums
+
+        assert_equal 80, @mySquareDif.sum_of_square_nums
+
+        assert_equal 320, @mySquareDif.find_diference
+    end
+   
+
+end
+
+
 

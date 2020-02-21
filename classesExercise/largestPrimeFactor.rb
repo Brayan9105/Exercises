@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class LargestPrime
     def initialize
         @largestPrimes = []
@@ -36,9 +38,25 @@ class LargestPrime
 
 end
 
-largest = LargestPrime.new
 
-puts largest.find_primes(13195)
-puts largest.find_primes(13195)
-puts largest.find_primes(13195)
-puts largest.find_primes(13195)
+class TestLargestPrimeFactor < Minitest::Test
+    def setup
+        @largest = LargestPrime.new
+    end
+
+    def test_is_prime?
+        assert_equal true, @largest.is_prime?(2)
+        assert_equal false, @largest.is_prime?(4)
+    end
+
+    def test_largest_prime_of
+        assert_equal 5, @largest.largest_prime_of(100)
+        assert_equal 2, @largest.largest_prime_of(4)
+    end
+
+    def test_find_primes
+        assert_equal 5, @largest.find_primes(100)
+        assert_equal 2, @largest.find_primes(4)
+    end
+end
+

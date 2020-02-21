@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class LargestPalindrome
     def initialize(digits)
         @startFrom = "9" * digits
@@ -16,8 +18,12 @@ class LargestPalindrome
 
 end
 
-palindrome2dig = LargestPalindrome.new(2)
-palindrome3dig = LargestPalindrome.new(3)
+class TestLargestPalindrome < Minitest::Test
+    def setup
+        @palindrome3dig = LargestPalindrome.new(3)
+    end
 
-puts palindrome2dig.find_largest
-puts palindrome3dig.find_largest
+    def test_find_largest
+        assert_equal 90909, @palindrome3dig.find_largest
+    end
+end

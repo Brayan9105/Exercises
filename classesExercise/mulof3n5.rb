@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class Multiple
     def initialize
         @sumMultiples = []
@@ -15,12 +17,25 @@ class Multiple
 
     def find_multiple(number)        
         return @sumMultiples[number] if @sumMultiples[number]
-        sum = calcule_multiple(number) 
+        calcule_multiple(number) 
     end
 
 end
 
-myMultiples = Multiple.new
 
-puts myMultiples.find_multiple(10000000)
-puts myMultiples.find_multiple(10000000)
+class TestMultiple < Minitest::Test
+    def setup
+        @myMultiples = Multiple.new
+    end
+
+    def test_calcule_multiple
+        assert_equal 3, @myMultiples.calcule_multiple(5)
+        assert_equal 23, @myMultiples.calcule_multiple(10)
+    end
+
+    def test_find_multiple
+        assert_equal 3, @myMultiples.find_multiple(5)
+        assert_equal 23, @myMultiples.find_multiple(10)
+    end
+end
+

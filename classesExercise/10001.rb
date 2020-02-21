@@ -1,3 +1,5 @@
+require 'minitest/autorun'
+
 class Prime
     def initialize
         @primeArray = [0]
@@ -33,8 +35,18 @@ class Prime
     end
 end
 
-indexPrime = Prime.new
-puts indexPrime.find_prime_index(1)
-puts indexPrime.find_prime_index(2)
-puts indexPrime.find_prime_index(5)
-puts indexPrime.find_prime_index(6)
+
+
+class Test10001Prime < Minitest::Test
+
+    def setup
+        @indexPrime = Prime.new
+    end
+
+    def test_find_prime_index
+        assert_equal 2, @indexPrime.find_new_prime_index(1)
+        assert_equal 11, @indexPrime.find_new_prime_index(5)
+        assert_equal 13, @indexPrime.find_new_prime_index(6)
+    end
+
+end

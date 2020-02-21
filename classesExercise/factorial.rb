@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class Factorial
     attr_reader :sumFactorial
     def initialize
@@ -16,17 +18,13 @@ class Factorial
     end
 end
 
-myFactorial = Factorial.new
+class TestFactorial < Minitest::Test
+    def setup
+        @myFactorial = Factorial.new
+    end
 
-myFactorial.calculate_factorial(0)
-puts myFactorial.sumFactorial
-myFactorial.calculate_factorial(1)
-puts myFactorial.sumFactorial
-myFactorial.calculate_factorial(2)
-puts myFactorial.sumFactorial
-myFactorial.calculate_factorial(3)
-puts myFactorial.sumFactorial
-myFactorial.calculate_factorial(4)
-puts myFactorial.sumFactorial
-myFactorial.calculate_factorial(5)
-puts myFactorial.sumFactorial
+    def test_calculate_factorial
+        assert_nil  @myFactorial.calculate_factorial(5)
+        assert_equal 120, @myFactorial.sumFactorial
+    end
+end

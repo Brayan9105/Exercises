@@ -1,3 +1,5 @@
+require "minitest/autorun"
+
 class Fibonnaci
     attr_reader :fibsNumbers
     attr_reader :evenSum
@@ -18,6 +20,8 @@ class Fibonnaci
             end
             sum_even_numbers
         end
+
+        true
     end
 
     def sum_even_numbers
@@ -28,8 +32,19 @@ class Fibonnaci
     end
 end
 
-myFib = Fibonnaci.new
-puts myFib.evenSum
-myFib.find_sequence(10)
-myFib.find_sequence(13)
-puts myFib.evenSum
+
+class TestEvenFib < Minitest::Test
+    def setup
+        @myFib = Fibonnaci.new
+    end
+
+    def test_find_sequence
+        assert_equal true, @myFib.find_sequence(10)
+    end
+
+    def test_evenSum
+        assert_equal 0, @myFib.evenSum
+    end
+
+    
+end
