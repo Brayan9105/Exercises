@@ -1,41 +1,44 @@
-require "minitest/autorun"
+# frozen_string_literal: true
 
+require 'minitest/autorun'
+
+# Some documentation
 class Multiple
-    def initialize
-        @sumMultiples = []
-    end
+  def initialize
+    @sum_multiples = []
+  end
 
-    def calcule_multiple(number) 
-        sum=0
-        (1...number).each {|i|
-            next unless i%3 ==0 || i%5==0        
-            sum+=i
-        }    
-        @sumMultiples[number] = sum
-        sum
-    end
+  def calcule_multiple(number)
+    sum = 0
+    (1...number).each do |i|
+      next unless (i % 3).zero? || (i % 5).zero?
 
-    def find_multiple(number)        
-        return @sumMultiples[number] if @sumMultiples[number]
-        calcule_multiple(number) 
+      sum += i
     end
+    @sum_multiples[number] = sum
+    sum
+  end
 
+  def find_multiple(number)
+    return @sum_multiples[number] if @sum_multiples[number]
+
+    calcule_multiple(number)
+  end
 end
 
-
+# Some documentation
 class TestMultiple < Minitest::Test
-    def setup
-        @myMultiples = Multiple.new
-    end
+  def setup
+    @my_multiples = Multiple.new
+  end
 
-    def test_calcule_multiple
-        assert_equal 3, @myMultiples.calcule_multiple(5)
-        assert_equal 23, @myMultiples.calcule_multiple(10)
-    end
+  def test_calcule_multiple
+    assert_equal 3, @my_multiples.calcule_multiple(5)
+    assert_equal 23, @my_multiples.calcule_multiple(10)
+  end
 
-    def test_find_multiple
-        assert_equal 3, @myMultiples.find_multiple(5)
-        assert_equal 23, @myMultiples.find_multiple(10)
-    end
+  def test_find_multiple
+    assert_equal 3, @my_multiples.find_multiple(5)
+    assert_equal 23, @my_multiples.find_multiple(10)
+  end
 end
-

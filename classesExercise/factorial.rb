@@ -1,30 +1,35 @@
-require "minitest/autorun"
+# frozen_string_literal: true
 
+require 'minitest/autorun'
+
+# Some documentation
 class Factorial
-    attr_reader :sumFactorial
-    def initialize
-        @sumFactorial = 1
-        @lastNumber = 1
-    end
+  attr_reader :sum_factorial
 
-    def calculate_factorial(limit)
-        if limit > @lastNumber
-            loop do
-                @lastNumber += 1
-                @sumFactorial *=  @lastNumber
-                break unless @lastNumber < limit
-            end
-        end
+  def initialize
+    @sum_factorial = 1
+    @last_number = 1
+  end
+
+  def calculate_factorial(limit)
+    return unless limit > @last_number
+
+    loop do
+      @last_number += 1
+      @sum_factorial *= @last_number
+      break unless @last_number < limit
     end
+  end
 end
 
+# Some doucmentation
 class TestFactorial < Minitest::Test
-    def setup
-        @myFactorial = Factorial.new
-    end
+  def setup
+    @my_factorial = Factorial.new
+  end
 
-    def test_calculate_factorial
-        assert_nil  @myFactorial.calculate_factorial(5)
-        assert_equal 120, @myFactorial.sumFactorial
-    end
+  def test_calculate_factorial
+    assert_nil @my_factorial.calculate_factorial(5)
+    assert_equal 120, @my_factorial.sum_factorial
+  end
 end

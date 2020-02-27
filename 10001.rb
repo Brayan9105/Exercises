@@ -1,17 +1,23 @@
-def prime10001(number)
-    primes = []
-    i=2
-    loop do
-        count = 0
-        for j in 1..i do
-            count+=1 if i%j==0    
-        end
+# frozen_string_literal: true
 
-        primes << i if count == 2
-        i+=1
-        break if primes.length == number
-    end
-    primes.last
+# Some documentation
+def prime10001(number)
+  primes = []
+  i = 2
+  loop do
+    i += 1
+    break if primes.length == number
+  end
+  primes.last
+end
+
+def prime?(number)
+  count = 0
+  (1..number).each do |j|
+    count += 1 if (number % j).zero?
+  end
+
+  primes << number if count == 2
 end
 
 puts prime10001(6)

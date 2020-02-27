@@ -1,6 +1,9 @@
-def factorial(n)
-    return 1 if n<=1
-    n*factorial(n-1)
+# frozen_string_literal: true
+
+def factorial(num)
+  return 1 if num <= 1
+
+  num * factorial(n - 1)
 end
 
 puts factorial(0)

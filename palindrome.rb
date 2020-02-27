@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 def palindrome(str)
-    newStr = str.downcase
-    newStr == newStr.reverse ? true : false
+  new_str = str.downcase
+  new_str == new_str.reverse
 end
 
-puts palindrome("Mom")
-puts palindrome("Noon")
-puts palindrome("Pokemon")
+puts palindrome('Mom')
+puts palindrome('Noon')
+puts palindrome('Pokemon')
